@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MonikaMart - Online Shopping</title>
+    <link rel="stylesheet" href="/css/style.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f6fa;
+        }
+
+        header {
+            background: #2874f0;
+            color: white;
+            padding: 18px 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .search {
+            width: 40%;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: bold;
+        }
+
+        .hero {
+            margin: 25px 50px;
+            padding: 50px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #2874f0, #7b2ff7);
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 25px;
+        }
+
+        .shop-btn {
+            display: inline-block;
+            background: white;
+            color: #2874f0;
+            padding: 13px 25px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .products {
+            padding: 10px 50px 40px;
+        }
+
+        .products h2 {
+            margin-bottom: 20px;
+        }
+
+        .cards {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: white;
+            width: 220px;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 10px #ddd;
+        }
+
+        .card .emoji {
+            font-size: 55px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+        }
+
+        .price {
+            color: #2874f0;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        footer {
+            background: #172337;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">🛍️ MonikaMart</div>
+
+    <input class="search" type="text" placeholder="Search products...">
+
+    <nav>
+        <a href="/">Home</a>
+        <a href="/register">Register</a>
+        <a href="/login">Login</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h1>Welcome to MonikaMart 🛒</h1>
+    <p>Everything you need, all in one place!</p>
+    <a class="shop-btn" href="/register">Start Shopping</a>
+</section>
+
+<section class="products">
+    <h2>Popular Categories</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="emoji">📱</div>
+            <h3>Mobiles</h3>
+            <p class="price">Explore Now</p>
+        </div>
+
+        <div class="card">
+            <div class="emoji">💻</div>
+            <h3>Electronics</h3>
+            <p class="price">Explore Now</p>
+        </div>
+
+        <div class="card">
+            <div class="emoji">👕</div>
+            <h3>Fashion</h3>
+            <p class="price">Explore Now</p>
+        </div>
+
+        <div class="card">
+            <div class="emoji">🏠</div>
+            <h3>Home</h3>
+            <p class="price">Explore Now</p>
+        </div>
+
+    </div>
+</section>
+
+<footer>
+    © 2026 MonikaMart | Online Shopping System
+</footer>
+
+</body>
+</html>

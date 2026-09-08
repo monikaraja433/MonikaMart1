@@ -1,0 +1,134 @@
+```html
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Product - MonikaMart</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            margin: 0;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 25px;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            background: #2874f0;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1256c4;
+        }
+
+        .back {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            text-decoration: none;
+            color: #2874f0;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>✏️ Edit Product</h1>
+
+    <form th:action="@{/products/save}" th:object="${product}" method="post">
+
+        <!-- Keep existing product ID -->
+        <input type="hidden" th:field="*{id}">
+
+        <label>Product Name</label>
+        <input type="text"
+               th:field="*{name}"
+               required>
+
+        <label>Description</label>
+        <textarea th:field="*{description}"
+                  required></textarea>
+
+        <label>Price</label>
+        <input type="number"
+               th:field="*{price}"
+               step="0.01"
+               min="0"
+               required>
+
+        <label>Stock</label>
+        <input type="number"
+               th:field="*{stock}"
+               min="0"
+               required>
+
+        <label>Category</label>
+        <input type="text"
+               th:field="*{category}"
+               required>
+
+        <label>Image</label>
+        <input type="text"
+               th:field="*{image}">
+
+        <button type="submit">
+            💾 Update Product
+        </button>
+
+    </form>
+
+    <a class="back" href="/products">
+        ← Back to Products
+    </a>
+
+</div>
+
+</body>
+</html>
+```

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Products - MonikaMart</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f5f5f5;
+        }
+
+        header {
+            background: #2874f0;
+            color: white;
+            padding: 18px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        .cart-btn {
+            background: white;
+            color: #2874f0;
+            padding: 10px 18px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .container {
+            padding: 30px 50px;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .product-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .product-card h2 {
+            margin-top: 0;
+        }
+
+        .price {
+            font-size: 20px;
+            font-weight: bold;
+            color: #388e3c;
+        }
+
+        .category {
+            color: #777;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 10px 15px;
+            background: #2874f0;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .btn:hover {
+            background: #1257c7;
+        }
+
+        .empty {
+            text-align: center;
+            padding: 50px;
+            background: white;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <h1>🛍️ MonikaMart</h1>
+
+    <a href="/cart" class="cart-btn">
+        🛒 Cart
+    </a>
+
+</header>
+
+<div class="container">
+
+    <h1>All Products</h1>
+
+    <div class="products" th:if="${products != null and !products.isEmpty()}">
+
+        <div class="product-card" th:each="product : ${products}">
+
+            <h2 th:text="${product.name}">Product Name</h2>
+
+            <p class="category">
+                Category:
+                <span th:text="${product.category}">Category</span>
+            </p>
+
+            <p th:text="${product.description}">
+                Product description
+            </p>
+
+            <p class="price">
+                ₹<span th:text="${product.price}">0</span>
+            </p>
+
+            <p>
+                Stock:
+                <span th:text="${product.stock}">0</span>
+            </p>
+
+            <a th:href="@{/products/{id}(id=${product.id})}"
+               class="btn">
+                View Product
+            </a>
+
+            <a th:href="@{/cart/add(productId=${product.id}, productName=${product.name}, price=${product.price})}"
+               class="btn">
+                Add to Cart
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="empty"
+         th:if="${products == null or products.isEmpty()}">
+
+        <h2>No Products Available</h2>
+
+        <p>Seller has not added any products yet.</p>
+
+        <a href="/" class="btn">Back to Home</a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

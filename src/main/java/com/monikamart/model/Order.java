@@ -11,9 +11,14 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private double totalAmount;
 
+    @Column(nullable = false)
     private LocalDateTime orderDate;
+
+    @Column(nullable = false)
+    private String status;
 
     public Order() {
     }
@@ -36,5 +41,13 @@ public class Order {
 
     public void setOrderDate(LocalDateTime orderDate) {
         this.orderDate = orderDate;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

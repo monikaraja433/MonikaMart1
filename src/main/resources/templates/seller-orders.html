@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Seller Orders - MonikaMart</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f5f5f5;
+        }
+
+        header {
+            background: #2874f0;
+            color: white;
+            padding: 18px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        .back-btn {
+            background: white;
+            color: #2874f0;
+            padding: 10px 18px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .container {
+            padding: 30px 50px;
+        }
+
+        .order-card {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .order-card h2 {
+            margin-top: 0;
+            color: #2874f0;
+        }
+
+        .amount {
+            font-size: 20px;
+            font-weight: bold;
+            color: #388e3c;
+        }
+
+        .status {
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        select {
+            padding: 9px;
+            margin-left: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 18px;
+            background: #2874f0;
+            color: white;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #1256c4;
+        }
+
+        .empty {
+            text-align: center;
+            background: white;
+            padding: 50px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <h1>🛍️ MonikaMart - Seller</h1>
+
+    <a href="/seller/dashboard" class="back-btn">
+        ← Dashboard
+    </a>
+
+</header>
+
+<div class="container">
+
+    <h1>📦 Customer Orders</h1>
+
+    <div th:if="${orders != null and !orders.isEmpty()}">
+
+        <div class="order-card"
+             th:each="order : ${orders}">
+
+            <h2>
+                Order #<span th:text="${order.id}">1</span>
+            </h2>
+
+            <p>
+                <strong>Order Date:</strong>
+                <span th:text="${order.orderDate}">
+                    Date
+                </span>
+            </p>
+
+            <p class="amount">
+                Total Amount:
+                ₹<span th:text="${order.totalAmount}">
+                    0
+                </span>
+            </p>
+
+            <p class="status">
+                Current Status:
+                <span th:text="${order.status}">
+                    PLACED
+                </span>
+            </p>
+
+            <form action="/seller/orders/update-status" method="post">
+
+                <input type="hidden"
+                       name="orderId"
+                       th:value="${order.id}">
+
+                <label>
+                    Change Status:
+                </label>
+
+                <select name="status">
+
+                    <option value="PLACED"
+                            th:selected="${order.status == 'PLACED'}">
+                        PLACED
+                    </option>
+
+                    <option value="CONFIRMED"
+                            th:selected="${order.status == 'CONFIRMED'}">
+                        CONFIRMED
+                    </option>
+
+                    <option value="SHIPPED"
+                            th:selected="${order.status == 'SHIPPED'}">
+                        SHIPPED
+                    </option>
+
+                    <option value="DELIVERED"
+                            th:selected="${order.status == 'DELIVERED'}">
+                        DELIVERED
+                    </option>
+
+                </select>
+
+                <br>
+
+                <button type="submit" class="btn">
+                    Update Status
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <div class="empty"
+         th:if="${orders == null or orders.isEmpty()}">
+
+        <h2>📭 No Orders Yet</h2>
+
+        <p>
+            Customers have not placed any orders yet.
+        </p>
+
+        <a href="/seller/dashboard" class="btn">
+            Back to Dashboard
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

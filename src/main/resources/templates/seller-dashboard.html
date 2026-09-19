@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Seller Dashboard - MonikaMart</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f6f8;
+        }
+
+        .navbar {
+            background: #2874f0;
+            color: white;
+            padding: 18px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logout {
+            color: white;
+            text-decoration: none;
+            background: #dc3545;
+            padding: 9px 16px;
+            border-radius: 5px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .welcome {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .welcome h1 {
+            margin-bottom: 10px;
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .card h2 {
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            background: #2874f0;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 5px;
+        }
+
+        .btn:hover {
+            background: #1256c4;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="navbar">
+
+        <div class="logo">
+            🛍️ MonikaMart - Seller
+        </div>
+
+        <a href="/logout" class="logout">
+            Logout
+        </a>
+
+    </div>
+
+
+    <div class="container">
+
+        <div class="welcome">
+
+            <h1>
+                Welcome, <span th:text="${userName}">Seller</span> 👋
+            </h1>
+
+            <p>
+                Manage your products and store from your seller dashboard.
+            </p>
+
+        </div>
+
+
+        <div class="dashboard">
+
+            <!-- Add Product -->
+
+            <div class="card">
+
+                <h2>➕ Add Product</h2>
+
+                <p>
+                    Add a new product to your store.
+                </p>
+
+                <a href="/products/add" class="btn">
+                    Add Product
+                </a>
+
+            </div>
+
+
+            <!-- Manage Products -->
+
+            <div class="card">
+
+                <h2>📦 Manage Products</h2>
+
+                <p>
+                    View, edit and delete your products.
+                </p>
+
+                <a href="/products" class="btn">
+                    Manage Products
+                </a>
+
+            </div>
+
+
+            <!-- Orders -->
+
+            <div class="card">
+
+                <h2>🛒 Orders</h2>
+
+                <p>
+                    View customer orders.
+                </p>
+
+                <a href="/seller/orders" class="btn">
+                    View Orders
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
